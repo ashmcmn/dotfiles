@@ -1,0 +1,10 @@
+alias awslogin="docker run --rm -it -v ${HOME}/.aws:/root/.aws docker-registry.corp.qc:5000/qc/aws-tools ./qc_aws_login.py -u ashley.mcmanamon"
+alias vl="vault login -method=ldap user=ashley.mcmanamon"
+alias newpr='open https://github.corp.qc/$(git remote get-url origin | cut -d ":" -f 2 | cut -d "." -f 1)/compare/$(git branch | grep \* | cut -d " " -f 2)'
+alias reload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
+alias path='echo $PATH | tr -s ":" "\n"'
+alias gcm='git checkout master'
+alias gco='git checkout'
+alias glo='git log --oneline --decorate'
+alias gl='git pull'
+alias gp='git push'

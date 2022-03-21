@@ -1,0 +1,3 @@
+function mx_update {
+    ssh ashley.mcmanamon@${1:?"Missing host"} "sudo /usr/local/bin/ansible_update.py -v -y"
+}
