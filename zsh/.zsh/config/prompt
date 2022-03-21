@@ -11,4 +11,4 @@ function git_branch_name()
 
 setopt prompt_subst
 
-prompt='%2/ $(git_branch_name) > '
+prompt='%F{magenta}%2/ %f $(git_branch_name) > %F{blue}'
