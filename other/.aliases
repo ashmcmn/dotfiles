@@ -8,3 +8,6 @@ alias gco='git checkout'
 alias glo='git log --oneline --decorate'
 alias gl='git pull'
 alias gp='git push'
+alias gitrestore="git reset --hard origin/master"
+alias l0="ssh launch0"
+alias updatelock='gradle dependencies --update-locks'
