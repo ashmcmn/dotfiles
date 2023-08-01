@@ -22,7 +22,8 @@
 2. Install the base apps and casks: `install/brew.sh`
 3. Install oh-my-zsh: <https://ohmyz.sh/#install>
 4. Deploy config files to your home dir: `install/symlinks.sh`
-5. Reload your terminal with `source ~/.zshrc`, subsequently use the alias `reload`
+5. Install a LTS version of node using nvm, this is used to install plugins for neovim: `nvm install --lts`
+6. Reload your terminal with `source ~/.zshrc`, subsequently use the alias `reload`
 
 ## Workspaces
 
