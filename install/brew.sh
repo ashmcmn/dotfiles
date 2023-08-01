@@ -20,8 +20,8 @@ install_items() {
 }
 
 if [[ $1 == "-c" ]]; then
-  brew tap homebrew/cask-fonts
-  install_cmd="brew install --cask"
+  /opt/homebrew/bin/brew tap homebrew/cask-fonts
+  install_cmd="/opt/homebrew/bin/brew install --cask"
 
   # loop through each workspace
   for workspace in ~/dotfiles/workspaces/*; do
@@ -30,7 +30,7 @@ if [[ $1 == "-c" ]]; then
     fi
   done
 else
-  install_cmd="brew install"
+  install_cmd="/opt/homebrew/bin/brew install"
 
   # loop through each workspace
   for workspace in ~/dotfiles/workspaces/*; do
