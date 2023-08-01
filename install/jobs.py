@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 import argparse
+import os
+
 import crontab
 import yaml
 import docker
@@ -28,7 +30,19 @@ def deploy_job(workspace, job_name):
 
     job_config = jobs_config["jobs"][job_name]
     cron_entry = job_config["cron"]
-    cmd = f"{job_config['cmd']}"
+
+    cmd = "/usr/local/bin/docker run"
+    if "working-dir" in job_config:
+        working_directory = os.path.expanduser(job_config["working-dir"])
+
+        if not os.path.exists(working_directory):
+            os.makedirs(working_directory)
+        cmd += f" -v {working_directory}:/data"
+
+        if os.path.isfile(f"{working_directory}/.env"):
+            cmd += f" --env-file {working_directory}/.env"
+
+    cmd += f" {job_name}"
 
     cron = crontab.CronTab(user=True)
     for existing_job in cron.find_comment(job_name):

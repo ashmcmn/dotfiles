@@ -170,13 +170,17 @@ jobs:
   - name: job_name
     source: path_to_dockerfile_directory
     cron: "* * * * *"
-    cmd: "run_command"
+    working-dir: path_to_working_directory
 ```
 
 name: A unique name for the job.
 source: The path to the directory containing the Dockerfile for the job.
 cron: The cron schedule for the job. You can define the schedule using standard cron syntax (e.g., "* * * * *", "0 0 * * *").
-cmd: The docker run command to use.
+cmd: The path to a directory to be mounted to the container and used as a working directory for persistence. Access using /data inside the job. (Optional)
+
+#### Environment Variables
+
+If you want to set environment variables in the docker container you can use a .env file in a provided working directory. This will be utilised by the docker run command via the --env-file flag.
 
 ### Deploying Jobs
 
@@ -198,20 +202,3 @@ python3 install/jobs.py
 ```
 
 The install/jobs.py script will build the Docker container using the specified Dockerfile, create the cron job using the provided schedule, and manage the system crontab for the specified jobs.
-
-### Error Logging
-
-You may wish to keep track of errors from runtime with on-disk logs. You can achieve this by attaching a volume and using logger with a file handler.
-e.g.
-
-```bash
-docker run -v ~/.local/job:/data job
-```
-
-```python
-logging.basicConfig(level=logging.INFO)
-job_logger = logging.getLogger(__name__)
-
-file_handler = logging.FileHandler("/data/errors.log")
-job_logger.addHandler(file_handler)
-```
