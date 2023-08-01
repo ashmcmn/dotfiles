@@ -1,1 +1,6 @@
-curl -s https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh && sudo chmod +x /usr/local/bin/cht.sh
+#!/usr/bin/env zsh
+
+mkdir -p $HOME/bin
+
+# Requires rlwrap
+curl https://cht.sh/:cht.sh -o $HOME/bin/cht.sh && chmod +x $HOME/bin/cht.sh

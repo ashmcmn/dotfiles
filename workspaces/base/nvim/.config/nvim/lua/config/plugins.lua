@@ -44,6 +44,11 @@ return require('packer').startup(function(use)
   }
   use 'kvrohit/substrata.nvim'
   
+  use {
+    'jedrzejboczar/possession.nvim',
+    requires = { 'nvim-lua/plenary.nvim' },
+  }
+
   -- LSPs
   use 'SmiteshP/nvim-navic'
   use {
