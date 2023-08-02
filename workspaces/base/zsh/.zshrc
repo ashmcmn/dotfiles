@@ -8,7 +8,7 @@ export EDITOR=nvim
 
 zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
-plugins=(aliases aws docker encode64 git golang history-search-multi-word jsontools poetry tmux)
+plugins=(aliases aws docker encode64 fzf git golang jsontools poetry tmux)
 
 autoload -Uz compinit
 compinit
