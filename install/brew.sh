@@ -3,6 +3,7 @@
 which -s brew
 if [[ $? != 0 ]] ; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  reload
 else
   brew update
 fi
@@ -20,8 +21,8 @@ install_items() {
 }
 
 if [[ $1 == "-c" ]]; then
-  /opt/homebrew/bin/brew tap homebrew/cask-fonts
-  install_cmd="/opt/homebrew/bin/brew install --cask"
+  brew tap homebrew/cask-fonts
+  install_cmd="brew install --cask"
 
   # loop through each workspace
   for workspace in ~/dotfiles/workspaces/*; do
@@ -30,7 +31,7 @@ if [[ $1 == "-c" ]]; then
     fi
   done
 else
-  install_cmd="/opt/homebrew/bin/brew install"
+  install_cmd="brew install"
 
   # loop through each workspace
   for workspace in ~/dotfiles/workspaces/*; do
