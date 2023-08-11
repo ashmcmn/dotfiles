@@ -2,6 +2,20 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- esc delay fix
+if vim.fn.has('gui_running') == 0 then
+    vim.opt.ttimeoutlen = 10
+
+    -- Create an autocommand group 'FastEscape'
+    vim.api.nvim_exec([[
+    augroup FastEscape
+        autocmd!
+        au InsertEnter * set timeoutlen=0
+        au InsertLeave * set timeoutlen=1000
+    augroup END
+    ]], false)
+end
+
 -- required for feline
 vim.opt.termguicolors = true
 
