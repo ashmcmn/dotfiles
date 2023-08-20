@@ -1,4 +1,11 @@
-eval $(brew shellenv)
+# Determine machine architecture and set the appropriate Homebrew path
+if [[ "$(uname -m)" == "arm64" ]]; then
+    # M1 Macs
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+else
+    # Intel Macs
+    eval "$(/usr/local/bin/brew shellenv)"
+fi
 
 function brewi() {
   workspace=$1
