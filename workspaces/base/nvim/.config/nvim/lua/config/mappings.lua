@@ -4,7 +4,7 @@ local nvim_tree = require('nvim-tree.api')
 
 
 map('n', '<Tab>', nvim_tree.tree.focus)
-map('n', '<M-CR>', vim.lsp.buf.code_action)
+map('n', '<A-CR>', vim.lsp.buf.code_action)
 map('n', 'gD', vim.lsp.buf.declaration)
 map('n', 'gd', vim.lsp.buf.definition)
 map('n', 'gi', vim.lsp.buf.implementation)
