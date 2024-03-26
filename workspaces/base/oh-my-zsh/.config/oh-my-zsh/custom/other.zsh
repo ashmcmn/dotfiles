@@ -1,3 +1,4 @@
 alias reload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
-alias path='echo $PATH | tr -s ":" "\n"'
-alias mux="tmuxinator"
+alias path='echo $PATH | tr ":" "\n"'
+
+path+=$HOME/.local/bin/

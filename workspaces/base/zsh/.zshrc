@@ -12,8 +12,6 @@ plugins=(aliases aws docker encode64 fzf git golang jsontools poetry tmux)
 
 autoload -Uz compinit
 compinit
-eval "$(op completion zsh)"; compdef _op op # onepassword completion
-eval "$(jira --completion-script-zsh)" # go-jira completion
 
 source $ZSH/oh-my-zsh.sh
 
