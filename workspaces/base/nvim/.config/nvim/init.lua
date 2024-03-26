@@ -2,6 +2,10 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+
 -- esc delay fix
 if vim.fn.has('gui_running') == 0 then
     vim.opt.ttimeoutlen = 10
@@ -23,8 +27,6 @@ require('config.settings')
 require('config.plugins')
 require('config.mappings')
 
-vim.cmd [[colorscheme substrata]]
-
 -- adjust tabs for nvim-tree
 local nvim_tree_events = require('nvim-tree.events')
 local bufferline_api = require('bufferline.api')
@@ -44,3 +46,8 @@ end)
 nvim_tree_events.subscribe('TreeClose', function()
   bufferline_api.set_offset(0)
 end)
+
+-- theme
+vim.g.gruvbox_material_background = 'soft'
+
+vim.cmd([[colorscheme gruvbox-material]])

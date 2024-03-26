@@ -1,15 +1,19 @@
 local servers = {
-  bashls,
-  clangd,
-  dockerls,
-  groovyls,
-  marksman,
-  jedi_language_server,
-  ruff_lsp,
-  sumneko_lua,
-  terraformls,
-  tsserver,
-  yamlls
+  "bashls",
+  "clangd",
+  "dockerls",
+  "groovyls",
+  "marksman",
+  "jedi_language_server",
+  "ruff_lsp",
+  "sumneko_lua",
+  "terraformls",
+  "tsserver",
+  "yamlls"
+}
+
+require("mason-lspconfig").setup {
+    ensure_installed = servers,
 }
 
 local navic = require("nvim-navic")
