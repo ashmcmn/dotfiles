@@ -29,14 +29,18 @@ you will likely want to modify it to your own liking.
 
 ## Setup
 
-1. Clone this repo: `git clone <url>`
-2. Install the base apps and casks: `install/brew.sh`
-3. Install python using pyenv: `pyenv -h`
-4. Install pipx apps: `install/pipx.sh`
-5. Install oh-my-zsh: <https://ohmyz.sh/#install>
-6. Deploy config files to your home dir: `install/symlinks.sh`
-7. Install a LTS version of node using nvm, this is used to install plugins for neovim: `nvm install --lts`
-8. Reload your terminal with `source ~/.zshrc`, subsequently use the alias `reload`
+1. Clone this repo: `git clone <url>` (fresh install? download zip and extract to home)
+2. Install oh-my-zsh: <https://ohmyz.sh/#install>
+3. As per [Customizing Symlinks](#customizing-symlinks), setup a symlink-config (oh-my-zsh and zsh required)
+4. Deploy config files to your home dir: `./install/symlinks.sh`
+5. Reload your terminal with `source ~/.zshrc`, subsequently use the alias `reload`. Expect errors until remaining setup items complete.
+6. Install the base apps and casks: `./install/brew.sh`
+7. Install python using pyenv: `pyenv -h`
+8. Install pipx apps: `./install/pipx.sh`
+9. Install a LTS version of node using nvm, this is used to install plugins for neovim: `nvm install --lts`
+
+Optional:
+ - Refer to [this guide](https://github.com/drduh/macOS-Security-and-Privacy-Guide?tab=readme-ov-file) for security recommendations.
 
 ## Workspaces
 
