@@ -16,6 +16,7 @@ llvm
 neovim
 nvm
 pgcli
+pipx
 py3cairo
 pyenv
 ripgrep

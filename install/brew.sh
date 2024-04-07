@@ -57,8 +57,14 @@ install_items() {
 install_homebrew
 update_homebrew
 
-# Set default install command for apps
-install_cmd="brew install"
+# Set default install command for apps and cask
+install_cmd_app="brew install"
+install_cmd_cask="brew install --cask"
+list_cmd_app="brew list"
+list_cmd_cask="brew list --cask"
+install_app=true
+install_cask=true
+install_occurred=false
 
 # Parse command-line arguments
 while [[ $# -gt 0 ]]; do
@@ -70,19 +76,22 @@ while [[ $# -gt 0 ]]; do
         -c|--cask)
             # Install casks
             brew tap homebrew/cask-fonts
-            install_cmd="brew install --cask"
-            list_cmd="brew list --cask"
+            install_app=false
+            ;;
+        -a|--app)
+            install_cask=false
             ;;
         *)
             if [[ -d $1 ]]; then
                 # Install from specified workspace directory
                 workspace=$1
-                if [[ $install_cmd == "brew install --cask" ]]; then
-                    install_items "$workspace/brew-casks" "$install_cmd" "$list_cmd"
-                else
-                    install_items "$workspace/brew-apps" "$install_cmd" "brew list"
+                if $install_cask; then
+                    install_items "$workspace/brew-casks" "$install_cmd_cask" "$list_cmd_cask"
                 fi
-                exit 0
+                if $install_app; then
+                    install_items "$workspace/brew-apps" "$install_cmd_app" "$list_cmd_app"
+                fi
+                install_occurred=true
             else
                 echo "Error: Unknown option or workspace directory '$1'"
                 print_help
@@ -93,17 +102,22 @@ while [[ $# -gt 0 ]]; do
     shift
 done
 
-# Default behavior: install apps/casks from all workspaces
-if [[ $install_cmd == "brew install --cask" ]]; then
+if [[ $install_occurred == false ]]
+then
+  if [[ $install_cask == true ]]
+  then
     for workspace in ~/dotfiles/workspaces/*; do
-        if [ -d "$workspace" ]; then
-            install_items "$workspace/brew-casks" "$install_cmd" "$list_cmd"
-        fi
+      if [ -d "$workspace" ]; then
+        install_items "$workspace/brew-casks" "$install_cmd_cask" "$list_cmd_cask"
+      fi
     done
-else
+  fi
+  if [[ $install_app == true ]]
+  then
     for workspace in ~/dotfiles/workspaces/*; do
-        if [ -d "$workspace" ]; then
-            install_items "$workspace/brew-apps" "$install_cmd" "brew list"
-        fi
+      if [ -d "$workspace" ]; then
+        install_items "$workspace/brew-apps" "$install_cmd_app" "$list_cmd_app"
+      fi
     done
+  fi
 fi
