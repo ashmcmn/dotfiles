@@ -4,16 +4,16 @@ if not feline_ok then
 end
 
 local substrata = {
-  fg =      "#b5b4c9",
-  bg =      "#191c25",
-  black =   '#191c25',
-  red =     '#fe9f7c',
-  green =   '#76a065',
-  yellow =  '#ab924c',
-  blue =    '#8296b0',
-  magenta = '#c6aed7',
-  cyan =    '#659ea2',
-  white =   '#b5b4c9',
+  fg =      "#d4be98",
+  bg =      "#32302f",
+  black =   '#45403d',
+  red =     '#ea6962',
+  green =   '#a9b665',
+  yellow =  '#d8a657',
+  blue =    '#7daea3',
+  magenta = '#d3869b',
+  cyan =    '#89b482',
+  white =   '#d4be98',
 }
 
 local provide = function(provider, fg_color, bg_color, style, left_sep, right_sep, enabled)
